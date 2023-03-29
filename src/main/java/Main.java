@@ -11,6 +11,9 @@ public class Main {
             String token1 = sc.next();
             String token2 = sc.next();
             System.out.println("hello = " + token1 + " , world = " + token2);
+            int n1 = Integer.parseInt(token1);
+            int n2 = Integer.parseInt(token2);
+            System.out.println(n1 + n2 + String.valueOf(n1 + n2));
         }
         
         // リスト
