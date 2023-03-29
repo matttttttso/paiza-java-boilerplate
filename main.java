@@ -21,22 +21,33 @@ public class Main {
         for (String str : list) {
             System.out.println("list for loop : " + str);
         }
-        // リスト stream.filter.collect(Collectors)
+        // リスト stream.filter.collect(), Collectors
         List<String> filteredList = list.stream()
-					.filter(str -> Objects.equals(str, "test3"))
-					.collect(Collectors.toList());
-		System.out.println("list.stream.filter.collect(Collectors) " + filteredList.size());
-		// リスト stream.filter.findFirst() Optional
-		Optional<String> optStr = list.stream()
-						.filter(str -> Objects.equals(str, "test3"))
-						.findFirst();
-		if (optStr.isPresent()) {
-		    System.out.println("list.stream.filter.findFirst() " + optStr.get());
-    		if (optStr.get().startsWith("t")) {
-    			optStr.get().replace("t", "p");
-			}
-			System.out.println("replace " + optStr.get().replace("t", "p"));
-			System.out.println("replaced but " + optStr.get());
-		}
+                    .filter(str -> Objects.equals(str, "test3"))
+                    .collect(Collectors.toList());
+        System.out.println("list.stream.filter.collect(Collectors) " + filteredList.size());
+        // リスト stream.filter.findFirst(), Optional
+        Optional<String> optStr = list.stream()
+                        .filter(str -> Objects.equals(str, "test3"))
+                        .findFirst();
+        if (optStr.isPresent()) {
+            System.out.println("list.stream.filter.findFirst() " + optStr.get());
+            // startsWith
+            if (optStr.get().startsWith("t")) {
+                optStr.get().replace("t", "p");
+            }
+            // replace
+            System.out.println("replace " + optStr.get().replace("t", "p"));
+            System.out.println("replaced but " + optStr.get());
+        }
+        
+        // マップ
+        Map<String, Test> testMap = new LinkedHashMap<>();
+        list.stream().forEach(
+            str -> testMap.put(str, new Test(str, str.replace("test", "value")))
+        );
+        testMap.entrySet().stream().forEach(entry -> {
+            System.out.println("key:" + entry.getKey() + " value:" + entry.getValue().getParam2());
+        });
     }
 }
