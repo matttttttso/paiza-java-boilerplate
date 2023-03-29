@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Map.Entry;
 
 public class Main {
     public static void main(String[] args ) throws Exception {
@@ -49,5 +50,8 @@ public class Main {
         testMap.entrySet().stream().forEach(entry -> {
             System.out.println("key:" + entry.getKey() + " value:" + entry.getValue().getParam2());
         });
+        for (Entry<String, Test> entry : testMap.entrySet()) {
+            System.out.println("key:" + entry.getKey() + " value:" + entry.getValue().getParam2());
+        }
     }
 }
