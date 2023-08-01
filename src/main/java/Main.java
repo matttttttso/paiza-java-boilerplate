@@ -51,10 +51,40 @@ public class Main {
             str -> testMap.put(str, new Test(str, str.replace("test", "value")))
         );
         testMap.entrySet().stream().forEach(entry -> {
-            System.out.println("key:" + entry.getKey() + " value:" + entry.getValue().getParam2());
+            System.out.println("key:" + entry.getKey() + " value:" + entry.getValue().getValue());
         });
         for (Entry<String, Test> entry : testMap.entrySet()) {
-            System.out.println("key:" + entry.getKey() + " value:" + entry.getValue().getParam2());
+            System.out.println("key:" + entry.getKey() + " value:" + entry.getValue().getValue());
         }
     }
+    
+    static class Test {
+        private String key;
+        private String value;
+        
+        public String getKey() {
+    		return key;
+    	}
+    	public void setKey(String key) {
+    		this.key = key;
+    	}
+    	public String getValue() {
+    		return value;
+    	}
+    	public void setValue(String value) {
+    		this.value = value;
+    	}
+        
+        public Test(String key, String value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+    
+    // input example
+    /*
+        1 1
+        2 2
+
+     */
 }
